@@ -1,2 +1,18 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<h1>商品検索</h1>
+
+<%# search_form_forメソッドの引数に @pオブジェクトを持ってくる。 %>
+<%# eq は equal の略称で、条件に該当するもの(=選択した商品名に合致するもの)を検索する。 %>
+
+<%= search_form_for @p ,url: products_search_path do |f| %>
+<%= f.label :name_eq, '商品名' %>
+<%= f.collection_select :name_eq, @products, :name, :name, include_blank: '指定なし' %>
+<br>
+<%= f.submit '検索' %>
+<% end %>
+
+<%# collection_selectの引数は、第一引数, 第二引数, 第三引数, 第四引数, 第五引数, オプション %>
+<%# 第一引数はメソッド %>
+<%# 第二引数はオブジェクト %>
+<%# 第三引数は値 %>
+<%# 第四引数は値の名前 %>
+<%# オプションinclude_blankは何も選択していない時に表示される文字 %>
