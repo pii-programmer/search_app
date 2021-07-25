@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   before_action :search_product, only: [:index, :search]
   def index
     @products = Product.all
+    set_product_column
   end
 
   def search
@@ -11,4 +12,9 @@ class ProductsController < ApplicationController
   private
   def search_product
     @p = Product.ransack(params[:q]) #検索オブジェクトを生成
+  end
+
+  def set_product_column
+    @product_name = Product.select("name").distinct # distinctメソッドはDBからレコードを取得する際、重複したものを削除してくれる。
+  end
 end
