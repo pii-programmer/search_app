@@ -6,19 +6,19 @@
 <%= search_form_for @p ,url: products_search_path do |f| %>
 <%= f.label :name_eq, '商品名' %>
 <%= f.collection_select :name_eq, @product_name, :name, :name, include_blank: '指定なし' %>
-<br>
+  <br>
 <%= f.submit '検索' %>
 <% end %>
 
 <% @products.each do |product| %>
-<br>
-<li>
-<%= product.name %>
-<%= product.size %>
-<%= product.status %>
-<%= product.price %>
-<%= product.category.name %>
-</li>
+  <br>
+  <li>
+  <%= product.name %>
+  <%= product.size %>
+  <%= product.status %>
+  <%= product.price %>
+  <%= product.category.name %>
+  </li>
 <% end %>
 
 <%# collection_selectの引数は、第一引数, 第二引数, 第三引数, 第四引数, 第五引数, オプション %>
