@@ -10,6 +10,17 @@
 <%= f.submit '検索' %>
 <% end %>
 
+<% @products.each do |product| %>
+<br>
+<li>
+<%= product.name %>
+<%= product.size %>
+<%= product.status %>
+<%= product.price %>
+<%= product.category.name %>
+</li>
+<% end %>
+
 <%# collection_selectの引数は、第一引数, 第二引数, 第三引数, 第四引数, 第五引数, オプション %>
 <%# 第一引数はメソッド %>
 <%# 第二引数はオブジェクト %>
